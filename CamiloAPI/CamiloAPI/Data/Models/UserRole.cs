@@ -1,17 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CamiloAPI.Enumerations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CamiloAPI.Data.Models
 {
-    public class Client
+    public class UserRole
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public long RoleId { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Dna { get; set; }
+        public RoleType Type { get; set; }
     }
 }

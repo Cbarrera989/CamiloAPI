@@ -23,7 +23,7 @@ namespace CamiloAPI.Controllers
 
         // GET: api/Clients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Client>>> GetClient()
+        public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
           if (_context.Clients == null)
           {
@@ -88,7 +88,7 @@ namespace CamiloAPI.Controllers
         {
           if (_context.Clients == null)
           {
-              return Problem("Entity set 'CamiloAPIContext.Client'  is null.");
+              return Problem("Entity set 'CamiloAPIContext.Clients'  is null.");
           }
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();

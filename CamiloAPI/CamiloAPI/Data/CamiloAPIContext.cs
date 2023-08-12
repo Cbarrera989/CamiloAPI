@@ -9,21 +9,22 @@ namespace CamiloAPI.Data
 {
     public class CamiloAPIContext : DbContext
     {
-        public CamiloAPIContext (DbContextOptions<CamiloAPIContext> options)
+        public CamiloAPIContext(DbContextOptions<CamiloAPIContext> options)
             : base(options)
         {
         }
 
-        public DbSet<CamiloAPI.Data.Models.Client> Clients { get; set; } = default!;
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Client>().ToTable(nameof(Client));
-            //modelBuilder.Entity<UserRole>().ToTable(nameof(UserRole));
-            //modelBuilder.Entity<User>().ToTable(nameof(User));
+            modelBuilder.Entity<UserRole>().ToTable(nameof(UserRole));
+            modelBuilder.Entity<User>().ToTable(nameof(User));
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

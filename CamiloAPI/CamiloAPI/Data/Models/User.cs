@@ -3,15 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CamiloAPI.Data.Models
 {
-    public class Client
+    public class User
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         [Required]
-        public string Dna { get; set; }
+        public string Password { get; set; }
+
+        public long RoleId { get; set; }
+
+        [ForeignKey(nameof(RoleId))]
+        public virtual UserRole Role { get; set; }
+
     }
 }
